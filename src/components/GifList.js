@@ -12,7 +12,7 @@ class GifList extends Component {
     return (
       <div className="results-header">
       { this.props.search !== ''?  (
-        <h2> Results for {this.props.search}</h2>
+        <h2> Results for <span>{this.props.search} </span></h2>
       ) : undefined
       }
 

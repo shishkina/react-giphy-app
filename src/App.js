@@ -10,9 +10,11 @@ class App extends Component {
     this.state = {
       hello: 'hello, YOU!',
       inputText: '',
+      numberOfGifs: '',
       searchGifs: [],
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleNumberOfQuotesChange = this.handleNumberOfQuotesChange.bind(this);
     this.handleInputSubmit = this.handleInputSubmit.bind(this);
     this.getGifs = this.getGifs.bind(this);
   }
@@ -20,16 +22,20 @@ class App extends Component {
     console.log(event.target.value);
     this.setState({inputText: event.target.value});
   }
+  handleNumberOfQuotesChange(event) {
+    console.log(event.target.value);
+    this.setState({numberOfGifs: event.target.value})
+  }
   handleInputSubmit(event) {
     event.preventDefault();
-    console.log(this.state.inputText, 'in submit');
+    console.log(this.state.inputText, this.state.numberOfGifs,'in submit');
     this.getGifs();
     console.log(this.state, 'after api call');
   }
 
   getGifs() {
     console.log('in getGifs');
-    fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.inputText}?&api_key=placeholder&limit=5`, {
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${this.state.inputText}?&api_key=placeholder&limit=${this.state.numberOfGifs}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -56,10 +62,12 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2> Welcome to Giphy App </h2>
         </div>
         <AddTextForm
           inputText={this.state.inputText}
+          numberOfGifs={this.state.numberOfGifs}
+          handleNumberOfQuotesChange={this.handleNumberOfQuotesChange}
           handleInputChange={this.handleInputChange}
           handleInputSubmit={this.handleInputSubmit}
           />
