@@ -1,24 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class AddTextForm extends Component {
-  render() {
+const AddTextForm = (props) => {
     return (
       <form className="form"
-        onSubmit={this.props.handleInputSubmit}
+        onSubmit={props.handleInputSubmit}
         >
         <input className="search" id="input"
           type="text"
-          value={this.props.inputText}
+          value={props.inputText}
           name="text"
           placeholder="Search text: "
-          onChange={this.props.handleInputChange}
+          onChange={props.handleInputChange}
           />
         <input className="search" id="quantity"
           type="text"
-          value={this.props.numberOfGifs}
+          value={props.numberOfGifs}
           name="number"
           placeholder="how many gifs?"
-          onChange={this.props.handleNumberOfQuotesChange}
+          onChange={props.handleNumberOfGifsChange}
         />
         <input className="search" id="search-button"
           type="submit"
@@ -26,6 +25,4 @@ class AddTextForm extends Component {
       </form>
     );
   }
-}
-
 export default AddTextForm;

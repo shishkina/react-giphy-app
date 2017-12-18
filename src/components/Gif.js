@@ -34,7 +34,6 @@ class Gif extends Component {
   }
 
   render() {
-    console.log(this.props.url, 'rendering gif');
     return (
       <div>
         { this.state.modalOpen ?

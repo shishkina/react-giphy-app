@@ -3,7 +3,7 @@ import Gif from './Gif';
 
 class GifList extends Component {
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return !(nextProps.gifs === this.props.gifs);
   }
 
